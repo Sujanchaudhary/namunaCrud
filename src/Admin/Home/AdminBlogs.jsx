@@ -78,7 +78,14 @@ export default function AdminBlogs() {
                   color="primary"
                   onClick={() => navigate(`/blog/${data.id}`)}
                 >
-                  Learn More
+                  Edit
+                </Button>
+                <Button
+                  size="small"
+                  color="warning"
+                  onClick={() => navigate(`/blog/${data.id}`)}
+                >
+                  Delete
                 </Button>
               </CardActions>
             </Card>
