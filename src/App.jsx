@@ -3,6 +3,8 @@ import UserLayout from "./User/Layout";
 import Home from "./User/Home/Home";
 import About from "./User/About/About";
 import SingleBlog from "./User/Blog/SingleBlog";
+import AdminLayout from "./Admin/AdminLayout";
+import AdminBlogs from "./Admin/Home/AdminBlogs";
 
 function App() {
   return (
@@ -13,6 +15,13 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="blog/:id" element={<SingleBlog />} />
+          </Route>
+
+          {/* admin layout starts */}
+          <Route path="/admin/" element={<AdminLayout />}>
+            <Route path="home" element={<AdminBlogs />} />
+            {/* <Route path="about" element={<About />} /> */}
+            {/* <Route path="blog/:id" element={<SingleBlog />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>
