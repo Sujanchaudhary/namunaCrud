@@ -20,12 +20,21 @@ export default function AdminBlogs() {
   const [blogs, setBlogs] = React.useState([]);
 
   const [loading, setLoading] = React.useState(true);
+  const [isDeleting, setIsDeleting] = React.useState(null);
   const getBlogs = async () => {
     const res = await axios.get(
       "https://648fc4121e6aa71680ca0aea.mockapi.io/blog"
     );
     setBlogs(res.data);
     setLoading(false);
+  };
+
+  const handleDelete = async (id) => {
+    setIsDeleting(id);
+    await axios.delete(
+      `https://648fc4121e6aa71680ca0aea.mockapi.io/blog/${id}`
+    );
+    getBlogs();
   };
 
   React.useEffect(() => {
@@ -73,19 +82,15 @@ export default function AdminBlogs() {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button
-                  size="small"
-                  color="primary"
-                  onClick={() => navigate(`/blog/${data.id}`)}
-                >
+                <Button size="small" color="primary">
                   Edit
                 </Button>
                 <Button
                   size="small"
                   color="warning"
-                  onClick={() => navigate(`/blog/${data.id}`)}
+                  onClick={() => handleDelete(data.id)}
                 >
-                  Delete
+                  {isDeleting === data.id ? "deleting...." : "delete"}
                 </Button>
               </CardActions>
             </Card>
