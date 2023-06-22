@@ -82,7 +82,7 @@ export default function AdminBlogs() {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={()=> navigate(`/admin/edit/${data.id}`)}>
                   Edit
                 </Button>
                 <Button

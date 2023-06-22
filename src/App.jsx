@@ -6,6 +6,7 @@ import SingleBlog from "./User/Blog/SingleBlog";
 import AdminLayout from "./Admin/AdminLayout";
 import AdminBlogs from "./Admin/Home/AdminBlogs";
 import AddBlog from "./Admin/Blog/Addblog";
+import EditBlog from "./Admin/Blog/EditBlog";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/admin/" element={<AdminLayout />}>
             <Route path="home" element={<AdminBlogs />} />
             <Route path="add" element={<AddBlog />} />
-            {/* <Route path="blog/:id" element={<SingleBlog />} /> */}
+            <Route path="edit/:id" element={<EditBlog />} />
           </Route>
         </Routes>
       </BrowserRouter>

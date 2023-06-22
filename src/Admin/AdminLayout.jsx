@@ -15,13 +15,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Outlet, useNavigate } from "react-router-dom";
-import { Home } from "@mui/icons-material";
+import { Add, Home } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
 function AdminLayout(props) {
-
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -34,22 +33,28 @@ function AdminLayout(props) {
       <Toolbar />
       <Divider />
       <List>
+
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton 
+          onClick={() => navigate("/admin/home")}>
             <ListItemIcon>
               <Home />
             </ListItemIcon>
             <ListItemText primary="home" />
           </ListItemButton>
         </ListItem>
+
         <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon onClick={()=> navigate('/admin/home')}>
-              <Home />
+          <ListItemButton 
+          onClick={() => navigate("/admin/add")}>
+            <ListItemIcon>
+              <Add />
             </ListItemIcon>
             <ListItemText primary="add blog" />
           </ListItemButton>
         </ListItem>
+
+
       </List>
     </div>
   );
