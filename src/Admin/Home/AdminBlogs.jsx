@@ -25,7 +25,7 @@ export default function AdminBlogs() {
     const res = await axios.get(
       "https://648fc4121e6aa71680ca0aea.mockapi.io/blog"
     );
-    setBlogs(res.data);
+    setBlogs(res.data.reverse());
     setLoading(false);
   };
 

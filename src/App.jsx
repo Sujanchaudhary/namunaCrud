@@ -5,6 +5,7 @@ import About from "./User/About/About";
 import SingleBlog from "./User/Blog/SingleBlog";
 import AdminLayout from "./Admin/AdminLayout";
 import AdminBlogs from "./Admin/Home/AdminBlogs";
+import AddBlog from "./Admin/Blog/Addblog";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           {/* admin layout starts */}
           <Route path="/admin/" element={<AdminLayout />}>
             <Route path="home" element={<AdminBlogs />} />
-            {/* <Route path="about" element={<About />} /> */}
+            <Route path="add" element={<AddBlog />} />
             {/* <Route path="blog/:id" element={<SingleBlog />} /> */}
           </Route>
         </Routes>
