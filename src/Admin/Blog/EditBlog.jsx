@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditBlog() {
+  const [clicked, setClicked] = React.useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const [singleBlog, setSingleBlog] = React.useState({
@@ -13,6 +14,7 @@ export default function EditBlog() {
     image: "",
     description: "",
   });
+
   const getSingleBlog = async () => {
     let res = await axios.get(
       `https://648fc4121e6aa71680ca0aea.mockapi.io/blog/${id}`
@@ -24,6 +26,16 @@ export default function EditBlog() {
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      singleBlog.title === "" ||
+      singleBlog.description === "" ||
+      singleBlog.author === "" ||
+      singleBlog.image === ""
+    ) {
+      alert("Please fill all the fields");
+      return;
+    }
+    setClicked(true);
     await axios.put(
       `https://648fc4121e6aa71680ca0aea.mockapi.io/blog/${id}`,
       singleBlog
@@ -48,6 +60,10 @@ export default function EditBlog() {
         }
         value={singleBlog.title}
       />
+      <Typography color="error">
+        {" "}
+        {singleBlog.title == "" ? "Title is empty" : ""}
+      </Typography>
       <Input
         type="url"
         id="filled-basic"
